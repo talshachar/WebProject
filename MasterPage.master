@@ -1,0 +1,128 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>The Head</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="stylesheet" type="text/css" href="StyleSheet.css" />
+</head>
+<body>
+    <%--MASTER DIV--%>
+    <form id="form1" runat="server">
+    <div style="height: 200px">
+        <%--GREY DIV--%>
+        <div style="height: 150px; width: 100%; background-color: #F8F8F8; box-shadow: 0px 3px 10px #C0C0C0;
+            position: absolute; top: 30px; left: 0px;">
+            <%--LOGO--%>
+            <img alt="The Head logo" src="logo.png" style="width: 330px;
+                height: 120px; padding-top: 15px; padding-right: 15px;" />
+        </div>
+        <%--NEVIGATION MENU--%>
+        <table class="nevtbl">
+            <tr>
+                <td onclick="location.href='home.aspx'">
+                    <img src="icons/home.png" class="icon" />&nbsp;ראשי
+                </td>
+                <td onclick="location.href='records.aspx'">
+                    <img src="icons/record-icon.png" class="icon" />&nbsp;תקליטים
+                </td>
+                <%if (Session["UserID"] == null)
+                  {%>
+                <td onclick="location.href='signup.aspx'">
+                    <img src="icons/user.png" class="icon" />&nbsp;הרשמה
+                </td>
+                <%}
+                  else
+                  { %>
+                <td onclick="location.href='update.aspx'">
+                    <img src="icons/user.png" class="icon" />&nbsp;החשבון שלי
+                </td>
+                <%} %>
+                <%if (Convert.ToInt16(Session["Permission"]) > 1)
+                  {%>
+                <td onclick="location.href='manage-users.aspx'">
+                    <img src="icons/key.png" class="icon" />&nbsp;ניהול משתמשים
+                </td>
+                <%} %>
+            </tr>
+        </table>
+        <%--BLACK DIV--%>
+        <div class="userdiv">
+            <div style="padding-top: 3px; padding-right: 3px;">
+                <%if (Session["UserID"] == null)
+                  {%>
+                <asp:TextBox ID="TextBoxID" runat="server" placeholder="מס' תעודת זהות" Width="100px"
+                    Font-Names="Open Sans Hebrew"></asp:TextBox>
+                <asp:TextBox ID="TextBoxPassword" runat="server" placeholder="סיסמה" Width="140px"
+                    Font-Names="Open Sans Hebrew" TextMode="Password"></asp:TextBox>
+                <asp:Button ID="ButtonSignIn" runat="server" OnClick="ButtonSignIn_Click" Text="התחברות לאתר"
+                    Style="font-family: Open Sans Hebrew; background: #EEEEEE; border-color: #fff;
+                    border-width: thin;" />&nbsp;
+                <asp:Label ID="LabelError" runat="server" ForeColor="#f76a60"></asp:Label>
+                <%}
+                  else
+                  {%>
+                <span style="color: white">שלום <b><i>
+                    <%=Session["FullName"] %></i></b></span> <a href="signout.aspx" style="color: #f76a60;
+                        font-size: 12px; text-decoration: none; font-weight: bold">(התנתק)</a>
+                <% } %>
+            </div>
+        </div>
+        <%--CART DIV--%>
+        <a href="shopping-cart.aspx">
+            <div class="cartdiv">
+                <table>
+                    <tr>
+                        <td>
+                            <img src="icons/shopping-cart.png" style="height: 34px; width: 34px" />
+                        </td>
+                        <td>
+                            סל הקניות (0)
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </a>
+    </div>
+    <%--END OF MASTER DIV--%>
+    <%--BACK TO TOP--%>
+    <div class="backtotop">
+        <img src="icons/up.png" style="height: 24px; width: 24px" />
+    </div>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+    </form>
+</body>
+<!--[if IE 6]>
+<script>
+</script>
+<![endif]-->
+<!--[if IE 7]>
+<script>
+</script>
+<![endif]-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        var offset = 120;
+        var duration = 1000;
+        jQuery(window).scroll(function () {
+            if (jQuery(this).scrollTop() > offset) {
+                jQuery('.backtotop').fadeIn(duration/3);
+            } else {
+                jQuery('.backtotop').fadeOut(duration/3);
+            }
+        });
+
+        jQuery('.backtotop').click(function (event) {
+            event.preventDefault();
+            jQuery('html, body').animate({
+                scrollTop: 0
+            }, duration);
+            return false;
+        })
+    });
+</script>
+</html>

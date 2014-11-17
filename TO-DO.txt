@@ -1,0 +1,8 @@
+﻿TO DO LIST
+-----------
+1. TOOOO MUCHHH!
+2. "update" validation
+3. "home" info page
+4. SHOPPING SYSTEM
+
+http://stackoverflow.com/questions/12196482/slidedown-and-slideup-on-hoverout-quick-basket
