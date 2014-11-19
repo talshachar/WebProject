@@ -22,12 +22,12 @@ public class Record
         this.recordCode = r.recordCode;
         this.recordName = r.recordName;
     }
-    public Record(int RecordID, string RecordName)
+    public Record(int RecordCode, string RecordName)
     {
         this.recordCode = RecordCode;
         this.recordName = RecordName;
     }
-    public Record(int RecordID)
+    public Record(int RecordCode)
     {
         this.recordCode = RecordCode;
     }

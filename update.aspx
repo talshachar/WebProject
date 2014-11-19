@@ -18,7 +18,7 @@
             </div>
         </div>
         <br />
-        <div style="border: thin solid #cccccc; padding: 30px; background: #efefef; display: inline-block;">
+        <div style="border: thin solid #cccccc; padding: 30px; background: #efefef; display: inline-block; box-shadow: 2px 2px 10px 0px #999">
             <div style="display: inline-block;">
                 מס' תעודת זהות:<br />
                 <asp:TextBox ID="TextBoxID" Enabled="false" runat="server"></asp:TextBox>
@@ -64,7 +64,7 @@
             <br />
             <asp:Label ID="LabelErrorDetails" runat="server" ForeColor="Red"></asp:Label>
         </div>
-        <div style="border: thin solid #cccccc; padding: 30px; background: #efefef; float: left;">
+        <div style="border: thin solid #cccccc; padding: 30px; background: #efefef; float: left; box-shadow: 1px 1px 7px 0px #999">
             <div style="display: inline-block;">
                 סיסמה חדשה:<br />
                 <asp:TextBox ID="TextBoxNewPassword" runat="server" TextMode="Password"></asp:TextBox>

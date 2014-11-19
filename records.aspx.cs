@@ -11,6 +11,7 @@ public partial class records : System.Web.UI.Page
     PagedDataSource pager; //לדאטא ליסא אין פייג'ינג לכן נשתמש באובייקט זה
     public int currentPage; //עמוד נוכחי
     DataSet ds;
+    protected ShoppingCart shoppingCart;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -67,10 +68,16 @@ public partial class records : System.Web.UI.Page
     protected void DataListRecords_ItemCommand(object source, DataListCommandEventArgs e)
     {
         DataListItem dl = DataListRecords.Items[e.Item.ItemIndex];
-        int RecordCode = Convert.ToInt32(DataListRecords.DataKeys[e.Item.ItemIndex]);
+        int RecordCode = 1;
         string RecordName = ((Label)dl.FindControl("LabelRecordName")).Text;
-        string ArtistName = ((Label)dl.FindControl("LabelArtistName")).Text;
-        string ReleaseYear = ((Label)dl.FindControl("LabelReleaseYear")).Text;
+        string Price = ((Label)dl.FindControl("LabelRecordPrice")).Text;
+        //string ArtistName = ((Label)dl.FindControl("LabelArtistName")).Text;
+        //string ReleaseYear = ((Label)dl.FindControl("LabelReleaseYear")).Text;
+        RecordInCart NewRecord = new RecordInCart(RecordCode, RecordName, decimal.Parse(Price), 1);
+        shoppingCart.AddRecord(NewRecord);
+
+        
+        
 
     }
 }

@@ -23,15 +23,15 @@ public class RecordInCart : Record
         this.price = r.Price;
         this.quantity = r.Quantity;
     }
-    public RecordInCart(int RecordID, string RecordName, decimal Price, short Quantity)
-        : base(RecordID, RecordName)
+    public RecordInCart(int RecordCode, string RecordName, decimal Price, short Quantity)
+        : base(RecordCode, RecordName)
     {
         quantity = Quantity;
         price = Price;
     }
 
-    public RecordInCart(int inRecordID)
-        : base(inRecordID)
+    public RecordInCart(int RecordCode)
+        : base(RecordCode)
     {
 
     }

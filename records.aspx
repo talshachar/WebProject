@@ -12,12 +12,13 @@
         RepeatDirection="Horizontal" Font-Names="Segoe UI" CellSpacing="20" 
         onitemcommand="DataListRecords_ItemCommand">
         <ItemStyle Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False"
-            Font-Underline="False" HorizontalAlign="Center" />
+            Font-Underline="False" HorizontalAlign="Center" 
+            Font-Names="Open Sans Hebrew" />
         <ItemTemplate>
             <table style="width: 100%; text-align:center; background:#fafafa;">
                 <tr>
                     <td style="border:1px solid #cccccc; padding-bottom:10px;">
-                        <asp:Image ID="ImageRecord" runat="server" ImageUrl='<%# Eval("ImageURL") %>' />
+                        <asp:Image ID="ImageRecord" runat="server" ImageUrl='<%# Eval("ImageURL") %>' CssClass="imgswap" />
                         <br />
                         <asp:Label ID="LabelRecordName" runat="server" Text='<%# Eval("RecordName") %>' 
                             Font-Bold="True"></asp:Label>
@@ -30,7 +31,7 @@
                 </tr>
                 <tr>
                     <td style="border:1px solid #cccccc; padding-bottom:10px; padding-top:10px; font-size: 14px;">
-                        כמות במלאי<br /> &nbsp;<asp:Label ID="LabelRecordsInStock" runat="server" 
+                        כמות במלאי<br /> <asp:Label ID="LabelRecordsInStock" runat="server" 
                             Text='<%# Eval("RecordsInStock") %>' Font-Bold="True"></asp:Label>
                         <br />
                         <br />
