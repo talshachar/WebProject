@@ -18,7 +18,9 @@
             <table style="width: 100%; text-align:center; background:#fafafa;">
                 <tr>
                     <td style="border:1px solid #cccccc; padding-bottom:10px;">
-                        <asp:Image ID="ImageRecord" runat="server" ImageUrl='<%# Eval("ImageURL") %>' CssClass="imgswap" />
+                        <asp:Image ID="ImageRecord" runat="server" ImageUrl='<%# Eval("ImageURL") %>'/>
+                        <asp:Label ID="LabelRecordCode" runat="server" Text='<%# Eval("RecordCode") %>' 
+                            Visible="False"></asp:Label>
                         <br />
                         <asp:Label ID="LabelRecordName" runat="server" Text='<%# Eval("RecordName") %>' 
                             Font-Bold="True"></asp:Label>
@@ -50,9 +52,10 @@
     </asp:DataList>
     <div style="text-align: center;">
         <asp:LinkButton ID="LinkButtonNextPage" runat="server" 
-            onclick="LinkButtonNextPage_Click">&lt;&lt;</asp:LinkButton>
-        <asp:Label ID="LabelPageIndex" runat="server"></asp:Label>
+            onclick="LinkButtonNextPage_Click" CssClass="blackbutton">&lt;&lt;</asp:LinkButton>
+        <asp:Label ID="LabelPageIndex" runat="server" BackColor="#494949" 
+            CssClass="blackbutton"></asp:Label>
         <asp:LinkButton ID="LinkButtonPrevPage" runat="server" 
-            onclick="LinkButtonPrevPage_Click">&gt;&gt;</asp:LinkButton>
+            onclick="LinkButtonPrevPage_Click" CssClass="blackbutton">&gt;&gt;</asp:LinkButton>
     </div>
 </asp:Content>

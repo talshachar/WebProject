@@ -25,7 +25,7 @@ h1
 {
     font-size:36px;
     font-family: Open Sans Hebrew;
-    text-shadow: 1px 1px 5px #999;
+    text-shadow: 1px 2px 3px #bbb;
     text-align:center;
 }
 
@@ -33,7 +33,7 @@ h2
 {
     font-size:18px;
     font-family: Open Sans Hebrew;
-    text-shadow: 1px 1px 5px #999;
+    text-shadow: 1px 2px 3px #bbb;
     text-align:center;
 }
 

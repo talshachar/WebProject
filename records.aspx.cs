@@ -9,24 +9,34 @@ using System.Data;
 public partial class records : System.Web.UI.Page
 {
     PagedDataSource pager; //לדאטא ליסא אין פייג'ינג לכן נשתמש באובייקט זה
-    public int currentPage; //עמוד נוכחי
+    public int CurrentPage; //עמוד נוכחי
     DataSet ds;
-    protected ShoppingCart shoppingCart;
+    protected ShoppingCart Cart;
 
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
         {
-            this.currentPage = 0;
+            this.CurrentPage = 0;
             Session["CurrentPage"] = 0;
             PopulateDataList();
         }
         else
         {
-            this.currentPage = Convert.ToInt32(Session["CurrentPage"]);
+            this.CurrentPage = Convert.ToInt32(Session["CurrentPage"]);
         }
-        int pageInd = this.currentPage + 1; //מספר העמוד
+        int pageInd = this.CurrentPage + 1; //מספר העמוד
         this.LabelPageIndex.Text = pageInd.ToString();
+
+
+        if (Session["Cart"] == null)
+        {
+            Cart = new ShoppingCart();
+        }
+        else
+        {
+            Cart = (ShoppingCart)Session["Cart"];
+        }
     }
     public void PopulateDataList()
     {
@@ -42,7 +52,7 @@ public partial class records : System.Web.UI.Page
             //מחזיר דאטאויו הנוצר מהטבלה
 
             pager.PageSize = 8;
-            pager.CurrentPageIndex = this.currentPage;
+            pager.CurrentPageIndex = this.CurrentPage;
             this.LinkButtonNextPage.Enabled = !pager.IsLastPage;
             this.LinkButtonPrevPage.Enabled = !pager.IsFirstPage;
             this.DataListRecords.DataSource = pager;
@@ -52,32 +62,30 @@ public partial class records : System.Web.UI.Page
     protected void LinkButtonNextPage_Click(object sender, EventArgs e)
     {
         Session["CurrentPage"] = Convert.ToInt32(Session["CurrentPage"]) + 1;
-        this.currentPage = Convert.ToInt32(Session["CurrentPage"]);
+        this.CurrentPage = Convert.ToInt32(Session["CurrentPage"]);
         PopulateDataList();
-        int pageInd = this.currentPage + 1;
+        int pageInd = this.CurrentPage + 1;
         this.LabelPageIndex.Text = pageInd.ToString();
     }
     protected void LinkButtonPrevPage_Click(object sender, EventArgs e)
     {
         Session["CurrentPage"] = Convert.ToInt32(Session["CurrentPage"]) - 1;
-        this.currentPage = Convert.ToInt32(Session["CurrentPage"]);
+        this.CurrentPage = Convert.ToInt32(Session["CurrentPage"]);
         PopulateDataList();
-        int pageInd = this.currentPage + 1;
+        int pageInd = this.CurrentPage + 1;
         this.LabelPageIndex.Text = pageInd.ToString();
     }
     protected void DataListRecords_ItemCommand(object source, DataListCommandEventArgs e)
     {
         DataListItem dl = DataListRecords.Items[e.Item.ItemIndex];
-        int RecordCode = 1;
+        string RecordCode = ((Label)dl.FindControl("LabelRecordCode")).Text; ;
         string RecordName = ((Label)dl.FindControl("LabelRecordName")).Text;
-        string Price = ((Label)dl.FindControl("LabelRecordPrice")).Text;
+        string Price = (((Label)dl.FindControl("LabelRecordPrice")).Text).Substring(2);
         //string ArtistName = ((Label)dl.FindControl("LabelArtistName")).Text;
         //string ReleaseYear = ((Label)dl.FindControl("LabelReleaseYear")).Text;
-        RecordInCart NewRecord = new RecordInCart(RecordCode, RecordName, decimal.Parse(Price), 1);
-        shoppingCart.AddRecord(NewRecord);
-
-        
-        
-
+        RecordInCart NewRecord = new RecordInCart(int.Parse(RecordCode), RecordName, decimal.Parse(Price), 1);
+        Cart.AddRecord(NewRecord);
+        Page.Session["Cart"] = Cart;
+        Response.Redirect("shopping-cart.aspx");
     }
 }

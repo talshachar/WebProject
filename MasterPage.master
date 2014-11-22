@@ -16,8 +16,7 @@
         <div style="height: 150px; width: 100%; background-color: #F8F8F8; box-shadow: 0px 3px 10px #C0C0C0;
             position: absolute; top: 30px; left: 0px;">
             <%--LOGO--%>
-            <img alt="The Head logo" src="logo.png" style="width: 330px;
-                height: 120px; padding-top: 15px; padding-right: 15px;" />
+            <img alt="The Head logo" src="logo.png" style="padding-top: 15px; padding-right: 15px;" />
         </div>
         <%--NEVIGATION MENU--%>
         <table class="nevtbl">
@@ -79,7 +78,7 @@
                             <img src="icons/shopping-cart.png" style="height: 34px; width: 34px" />
                         </td>
                         <td>
-                            סל הקניות (0)
+                            סל הקניות (<%=Cart.counter %>)
                         </td>
                     </tr>
                 </table>
@@ -107,7 +106,7 @@
 <script type="text/javascript">
     jQuery(document).ready(function () {
         var offset = 120;
-        var duration = 1000;
+        var duration = 700;
         jQuery(window).scroll(function () {
             if (jQuery(this).scrollTop() > offset) {
                 jQuery('.backtotop').fadeIn(duration/3);

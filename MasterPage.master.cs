@@ -7,9 +7,17 @@ using System.Web.UI.WebControls;
 
 public partial class MasterPage : System.Web.UI.MasterPage
 {
+    protected ShoppingCart Cart;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["Cart"] == null)
+        {
+            Cart = new ShoppingCart();
+        }
+        else
+        {
+            Cart = (ShoppingCart)Session["Cart"];
+        }
     }
     protected void ButtonSignIn_Click(object sender, EventArgs e)
     {

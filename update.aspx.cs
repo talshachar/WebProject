@@ -14,7 +14,7 @@ public partial class update : System.Web.UI.Page
         if (Session["UserID"] == null)
         {
 
-            Response.Redirect("signin.aspx");
+            Response.Redirect("home.aspx");
         }
         if (!Page.IsPostBack)
         {

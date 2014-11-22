@@ -10,6 +10,7 @@ using System.Data;
 public class ShoppingCart
 {
     ArrayList records;
+    public int counter;
 
     public ShoppingCart()
     {
@@ -23,7 +24,6 @@ public class ShoppingCart
     {
         get { return records.Count; }
     }
-
   
     public double GetFinalPrice()
     {
@@ -60,6 +60,7 @@ public class ShoppingCart
         {
             ((RecordInCart)records[index]).Quantity++;
         }
+        counter++;
     }
 
     public void DeleteRecord(Record Record)

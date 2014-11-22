@@ -43,18 +43,12 @@ public partial class manage_users : System.Web.UI.Page
     {
         try
         {
-            DataSet ds = new DataSet();
-            ds.ReadXml(Server.MapPath("~/App_Data/CitiesXML.xml"));
-            ((DropDownList)(GridViewUsers.Rows[e.RowIndex].Cells[3].FindControl("DropDownListCity"))).DataTextField = "Heb";
-            ((DropDownList)(GridViewUsers.Rows[e.RowIndex].Cells[3].FindControl("DropDownListCity"))).DataSource = ds.Tables[0];
-            ((DropDownList)(GridViewUsers.Rows[e.RowIndex].Cells[3].FindControl("DropDownListCity"))).DataBind();
-
             User user = new User();
             DataService service = new DataService();
             string ID = GridViewUsers.Rows[e.RowIndex].Cells[0].Text;
             string FirstName = ((TextBox)(GridViewUsers.Rows[e.RowIndex].Cells[1].Controls[0])).Text;
             string LastName = ((TextBox)(GridViewUsers.Rows[e.RowIndex].Cells[2].Controls[0])).Text;
-            string City = ((DropDownList)(GridViewUsers.Rows[e.RowIndex].Cells[3].FindControl("DropDownListCity"))).Text;
+            string City = ((DropDownList)(GridViewUsers.Rows[e.RowIndex].Cells[3].FindControl("DropDownListCity"))).SelectedItem.Text;
             string Address = ((TextBox)(GridViewUsers.Rows[e.RowIndex].Cells[4].Controls[0])).Text;
             string Email = ((TextBox)(GridViewUsers.Rows[e.RowIndex].Cells[5].Controls[0])).Text;
             string Password = ((TextBox)(GridViewUsers.Rows[e.RowIndex].Cells[6].Controls[0])).Text;

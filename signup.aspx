@@ -7,7 +7,7 @@
     <h1>
         הרשמה</h1>
     <div style="border: thin solid #cccccc; width: 400px; padding: 30px; background: #efefef;
-        margin-left: auto; margin-right: auto;">
+        margin-left: auto; margin-right: auto; box-shadow: 1px 1px 7px #bbb">
         <div style="display: inline-block;">
             מס&#39; תעודת זהות*
             <br />

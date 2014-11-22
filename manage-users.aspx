@@ -4,15 +4,20 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <style>
+.gvshadow
+{
+    box-shadow: 1px 1px 7px #bbb;
+}
+</style>   
     <h1>
         ניהול משתמשים</h1>
-    <div style="margin-right: 40px">
         <asp:GridView ID="GridViewUsers" runat="server" Style="margin: 0 auto; direction: rtl;
         text-align: right; width: 70%;" AutoGenerateColumns="False" OnRowCancelingEdit="GridViewUsers_RowCancelingEdit"
         OnRowEditing="GridViewUsers_RowEditing" OnRowUpdating="GridViewUsers_RowUpdating"
         OnRowDeleting="GridViewUsers_RowDeleting" CellPadding="4" ForeColor="#333333"
         GridLines="Horizontal" BorderColor="#5D7B9D" 
-        onrowdatabound="GridViewUsers_RowDataBound">
+        onrowdatabound="GridViewUsers_RowDataBound" CssClass="gvshadow">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
                 <asp:BoundField DataField="ID" HeaderText="מס' תעודת זהות" ReadOnly="True">
@@ -70,5 +75,4 @@
             <SortedDescendingCellStyle BackColor="#FFFDF8" />
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
-    </div>
 </asp:Content>
