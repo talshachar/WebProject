@@ -10,6 +10,7 @@ public partial class signout : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Session.Remove("UserID");
+        Session.Remove("FullName");
         Session.Remove("Permission");
         HttpCookie cookie = new HttpCookie("UserID");
         cookie.Expires = DateTime.Now.AddDays(-1d);

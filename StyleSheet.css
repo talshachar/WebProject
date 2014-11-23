@@ -177,7 +177,7 @@ input
 
 
 
-/* Login-top of page */
+/* Sign In panel on MasterPage */
 .userdiv
 {
     background-color: #292929;
@@ -221,21 +221,5 @@ input
 	top: 0px;
 	left: 135px;
 	box-shadow: 0px 0px 8px #5E3232;
-}
-/* ------------------ */
-
-
-
-/* Links */
-.whitelinks
-{
-    color:White;
-    font-size:16px;
-    text-decoration:none;
-    font-weight:bold;
-}
-.whitelinks:hover
-{
-    color:Aqua;
 }
 /* ------------------ */
