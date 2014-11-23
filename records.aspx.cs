@@ -53,13 +53,13 @@ public partial class records : System.Web.UI.Page
 
             pager.PageSize = 8;
             pager.CurrentPageIndex = this.CurrentPage;
-            this.LinkButtonNextPage.Enabled = !pager.IsLastPage;
-            this.LinkButtonPrevPage.Enabled = !pager.IsFirstPage;
+            this.ButtonNextPage.Visible = !pager.IsLastPage;
+            this.ButtonPrevPage.Visible = !pager.IsFirstPage;
             this.DataListRecords.DataSource = pager;
             this.DataListRecords.DataBind();
         }
     }
-    protected void LinkButtonNextPage_Click(object sender, EventArgs e)
+    protected void ButtonNextPage_Click(object sender, EventArgs e)
     {
         Session["CurrentPage"] = Convert.ToInt32(Session["CurrentPage"]) + 1;
         this.CurrentPage = Convert.ToInt32(Session["CurrentPage"]);
@@ -67,7 +67,7 @@ public partial class records : System.Web.UI.Page
         int pageInd = this.CurrentPage + 1;
         this.LabelPageIndex.Text = pageInd.ToString();
     }
-    protected void LinkButtonPrevPage_Click(object sender, EventArgs e)
+    protected void ButtonPrevPage_Click(object sender, EventArgs e)
     {
         Session["CurrentPage"] = Convert.ToInt32(Session["CurrentPage"]) - 1;
         this.CurrentPage = Convert.ToInt32(Session["CurrentPage"]);
