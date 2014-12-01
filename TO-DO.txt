@@ -6,3 +6,6 @@
 4. SHOPPING SYSTEM
 
 http://stackoverflow.com/questions/12196482/slidedown-and-slideup-on-hoverout-quick-basket
+
+CC VALIDATE
+https://secure.ftipgw.com/ArgoFire/validate.asmx
